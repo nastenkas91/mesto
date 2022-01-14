@@ -1,0 +1,9 @@
+.popup__field_occupation {
+  margin: 0 36px 48px;
+}
+
+@media screen and (max-width: 400px) {
+  .popup__field_occupation {
+    margin: 0 22px 45px;
+  }
+}
