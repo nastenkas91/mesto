@@ -1,3 +1,28 @@
 .elements {
+  margin-left: calc((100% - 880px) / 2);
+  margin-right: calc((100% - 880px) / 2);
+  margin-top: 0;
+  margin-bottom: 67px;
+}
 
+@media screen and (max-width: 920px) {
+  .elements {
+    margin-bottom: 50px;
+    margin-left: calc((100% - 581px) / 2);
+    margin-right: calc((100% - 581px) / 2);
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .elements {
+    margin-bottom: 50px;
+    margin-left: calc((100% - 282px) / 2);
+    margin-right: calc((100% - 282px) / 2);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .elements {
+    margin: 0 19px 48px;
+  }
 }
