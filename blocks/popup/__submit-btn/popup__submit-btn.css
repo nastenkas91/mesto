@@ -1,5 +1,7 @@
 .popup__submit-btn {
   background: #000;
+  border-radius: 2px;
+  border: none;
   max-width: 358px;
   height: 50px;
   margin: 0 36px 37px;
@@ -7,6 +9,13 @@
   line-height: 22px;
   text-align: center;
   color: #FFFFFF;
+  transition: opacity 2s;
+}
+
+popup__submit-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 320px) {
