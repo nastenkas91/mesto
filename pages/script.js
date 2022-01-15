@@ -15,4 +15,17 @@ function openProfileEditPopup() {
   popupProfileOccupation.value = profileOccupation.textContent;
 }
 
+function closeProfileEditPopup() {
+  profileEditPopup.classList.remove('popup_opened');
+}
 
+function formSubmitHandler(event) {
+  event.preventDefault();
+  profileName.textContent = popupProfileName.value;
+  profileOccupation.textContent = popupProfileOccupation.value;
+  profileEditPopup.classList.remove('popup_opened');
+}
+
+profileOpenPopupButton.addEventListener('click', openProfileEditPopup);
+profileClosePopupButton.addEventListener('click', closeProfileEditPopup);
+profileSubmitButton.addEventListener('click', formSubmitHandler);
