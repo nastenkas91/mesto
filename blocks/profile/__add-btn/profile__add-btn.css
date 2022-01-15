@@ -1,6 +1,7 @@
 .profile__add-btn {
   background: transparent url(../../../images/addButton.png) center / 22px no-repeat;
   border: 2px solid #FFFFFF;
+  border-radius: 2px;
   width: 150px;
   height: 50px;
   margin: auto 0 auto auto;
