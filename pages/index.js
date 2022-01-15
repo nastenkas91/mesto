@@ -29,3 +29,4 @@ function formSubmitHandler(event) {
 profileOpenPopupButton.addEventListener('click', openProfileEditPopup);
 profileClosePopupButton.addEventListener('click', closeProfileEditPopup);
 profileSubmitButton.addEventListener('click', formSubmitHandler);
+
