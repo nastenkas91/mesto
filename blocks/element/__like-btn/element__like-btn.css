@@ -1,6 +1,7 @@
 .element__like-btn {
   background: transparent url(../../../images/likeBtn.svg) center / 19px 22px no-repeat;
-  margin: 30px 30px 30px auto;
+  background-size: contain;
+  margin: 30px 20px 30px auto;
   width: 22px;
   height: 19px;
   border: none;
@@ -9,5 +10,5 @@
 }
 
 .element__like-btn:hover {
-  opacity: 0.6;
+  opacity: 0.5;
 }
