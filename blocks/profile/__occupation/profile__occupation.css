@@ -8,14 +8,14 @@
   white-space: nowrap;
   overflow: hidden;
   flex-wrap: wrap;
-  max-width: 400px;
+  max-width: 310px;
 }
 
 @media screen and (max-width: 900px) {
   .profile__occupation {
     font-size: 14px;
     line-height: 17px;
-    max-width: 300px;
+    max-width: 230px;
   }
 }
 
@@ -27,6 +27,6 @@
 
 @media screen and (max-width: 425px) {
   .profile__occupation {
-    max-width: 260px;
+    max-width: 240px;
   }
 }
