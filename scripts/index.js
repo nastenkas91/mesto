@@ -2,7 +2,6 @@ const profileOpenPopupButton = document.querySelector('.profile__edit-btn');
 const popup = document.querySelector('.popup');
 const form = document.querySelector('.form');
 const popupCloseButton = document.querySelector('.popup__close-btn');
-const formSubmitButton = document.querySelector('.form__submit-btn');
 const profileName = document.querySelector('.profile__name')
 const profileOccupation = document.querySelector('.profile__occupation')
 const formFieldName = document.querySelector('.form__field_type_name')
