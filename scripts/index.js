@@ -54,6 +54,8 @@ function addCard(nameValue, linkValue) {
   cardElement.querySelector('.element__name').textContent = nameValue;
   cardElement.querySelector('.element__like-btn').addEventListener('click', (evt) => {
     evt.target.classList.toggle('element__like-btn_active');});
+  cardElement.querySelector('.element__delete-btn').addEventListener('click', (evt) => {
+    cardElement.remove();})
   cardList.prepend(cardElement);
 }
 
