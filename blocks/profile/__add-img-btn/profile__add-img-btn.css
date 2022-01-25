@@ -1,4 +1,4 @@
-.profile__add-btn {
+.profile__add-img-btn {
   background: transparent url(../../../images/addButton.svg) center / 22px no-repeat;
   border: 2px solid #FFFFFF;
   border-radius: 2px;
@@ -9,12 +9,12 @@
   transition: opacity 1s;
 }
 
-.profile__add-btn:hover {
+.profile__add-img-btn:hover {
   opacity: 0.6;
 }
 
 @media screen and (max-width: 700px) {
-  .profile__add-btn {
+  .profile__add-img-btn {
     width: 282px;
     background-size: 16px;
     margin: 0 auto;

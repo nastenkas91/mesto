@@ -22,7 +22,7 @@
             </div>
             <button aria-label="Редактировать профиль" type="button" class="profile__edit-btn"></button>
           </div>
-          <button aria-label="Добавить" type="button" class="profile__add-btn"></button>
+          <button aria-label="Добавить" type="button" class="profile__add-img-btn"></button>
         </section>
 
         <section class="elements">
@@ -46,15 +46,26 @@
         </li>
       </template>
 
-
-      <div class="popup">
-        <div class="popup__container">
+      <div class="popup popup__type_edit-profile">
+        <div class="popup__container popup__container_type_edit-profile">
           <button aria-label="Закрыть" type="button" class="popup__close-btn"></button>
           <h2 class="popup__name">Редактировать профиль</h2>
           <form class="form" name="editProfile">
             <input type="text" class="form__field form__field_type_name" name="profileName"  required placeholder="Имя">
             <input type="text" class="form__field form__field_type_occupation" name="profileOccupation"  required placeholder="Род деятельности">
             <button aria-label="Сохранить" type="submit" class="form__submit-btn">Сохранить</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup_type_add-card">
+        <div class="popup__container popup__container_type_add-card">
+          <button aria-label="Закрыть" type="button" class="popup__close-btn"></button>
+          <h2 class="popup__name">Новое место</h2>
+          <form class="form" name="addCard">
+            <input type="text" class="form__field form__field_type_card-title" name="cardTitle"  required placeholder="Название">
+            <input type="text" class="form__field form__field_type_card-img" name="cardImg"  required placeholder="Ссылка на картинку">
+            <button aria-label="Создать" type="submit" class="form__submit-btn">Создать</button>
           </form>
         </div>
       </div>

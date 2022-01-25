@@ -26,9 +26,12 @@ const initialCards = [
 ];
 
 const profileOpenPopupButton = document.querySelector('.profile__edit-btn');
-const popup = document.querySelector('.popup');
+const popupProfileEdit = document.querySelector('.popup__type_edit-profile');
+const addCardOpenPopupButton = document.querySelector('.profile__add-img-btn');
+const popupAddCard = document.querySelector('.popup_type_add-card');
 const form = document.querySelector('.form');
-const popupCloseButton = document.querySelector('.popup__close-btn');
+const profileClosePopupButton = popupProfileEdit.querySelector('.popup__close-btn');
+const addCardClosePopupButton = popupAddCard.querySelector('.popup__close-btn');
 const profileName = document.querySelector('.profile__name')
 const profileOccupation = document.querySelector('.profile__occupation')
 const formFieldName = document.querySelector('.form__field_type_name')
@@ -48,26 +51,38 @@ function addCard(element) {
 //добавить карточки "из коробки"
 initialCards.forEach(addCard);
 
-
-
-function openPopup() {
-  formFieldName.value = profileName.textContent;
-  formFieldOccupation.value = profileOccupation.textContent;
-  popup.classList.add('popup_opened');
+//открыть попап добавления карточки
+function openAddCardPopup() {
+  popupAddCard.classList.add('popup_opened');
 }
 
-function closePopup() {
-  popup.classList.remove('popup_opened');
+//закрыть попап добавления карточки
+function closeAddCardPopup() {
+  popupAddCard.classList.remove('popup_opened');
+}
+
+//открыть попап редактирования профиля
+function openEditProfilePopup() {
+  formFieldName.value = profileName.textContent;
+  formFieldOccupation.value = profileOccupation.textContent;
+  popupProfileEdit.classList.add('popup_opened');
+}
+
+//закрыть попап редактирования профиля
+function closeEditProfilePopup() {
+  popupProfileEdit.classList.remove('popup_opened');
 }
 
 function formSubmitHandler(event) {
   event.preventDefault();
   profileName.textContent = formFieldName.value;
   profileOccupation.textContent = formFieldOccupation.value;
-  closePopup();
+  closeEditProfilePopup();
 }
 
-profileOpenPopupButton.addEventListener('click', openPopup);
-popupCloseButton.addEventListener('click', closePopup);
+profileOpenPopupButton.addEventListener('click', openEditProfilePopup);
+profileClosePopupButton.addEventListener('click', closeEditProfilePopup);
+addCardOpenPopupButton.addEventListener('click', openAddCardPopup);
+addCardClosePopupButton.addEventListener('click', closeAddCardPopup);
 form.addEventListener('submit', formSubmitHandler);
 
