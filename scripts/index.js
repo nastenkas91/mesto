@@ -44,6 +44,9 @@ const formFieldOccupation = formProfile.querySelector('.form__field_type_occupat
 const cardTitle =  formCard.querySelector('.form__field_type_card-title');
 const cardImage =  formCard.querySelector('.form__field_type_card-img');
 
+const popupImage = document.querySelector('.popup_type_image');
+const closeImageButton = popupImage.querySelector('.popup__close-btn');
+
 //функция добавления карточки в разметку (в начало)
 function addCard(nameValue, linkValue) {
   const cardList = document.querySelector('.elements__list');
@@ -108,24 +111,17 @@ for (i=0; i<initialCards.length; i++) {
   addCard(initialCards[i].name, initialCards[i].link);
 }
 
-const popupImage = document.querySelector('.popup_type_image');
 //открыть попап с картинкой
 function openPopupImage(evt) {
-
   popupImage.querySelector('.popup__image').src = evt.target.src;
   popupImage.querySelector('.popup__caption').textContent = evt.target.alt;
   popupImage.classList.add('popup_opened');
 }
 
-
 //закрыть попап с картинкой
 function closeImagePopup() {
   popupImage.classList.remove('popup_opened');
 }
-const closeImageButton = popupImage.querySelector('.popup__close-btn');
-closeImageButton.addEventListener('click', closeImagePopup);
-
-//initialCards.forEach(addCard(initialCards.name, initialCards.link));
 
 profileEditButton.addEventListener('click', openProfilePopup);
 closeProfileButton.addEventListener('click', closeProfilePopup);
@@ -134,4 +130,6 @@ formProfile.addEventListener('submit', formProfileSubmitHandler);
 addCardButton.addEventListener('click', openCardPopup);
 closeCardButton.addEventListener('click', closeCardPopup);
 formCard.addEventListener('submit', formCardSubmitHandler);
+
+closeImageButton.addEventListener('click', closeImagePopup);
 
