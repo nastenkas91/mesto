@@ -5,6 +5,7 @@
   font-family: 'Inter', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
 }
 
 @media screen and (max-width: 768px) {
