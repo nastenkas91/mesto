@@ -30,7 +30,7 @@ function createCard(nameValue, linkValue) {
   cardElement.querySelector('.element__delete-btn').addEventListener('click', () => {
     cardElement.remove();})
   cardElement.querySelector('.element__image').addEventListener('click', showImage);
-  addCard(cardElement);
+  return cardElement;
 }
 
 //добавить картинку в галерею
@@ -56,7 +56,8 @@ function closePopup(popup) {
 //окно создания карточки
 function formCardSubmitHandler(event) {
   event.preventDefault();
-  createCard(cardTitle.value, cardImage.value);
+  const cardElement = createCard(cardTitle.value, cardImage.value);
+  addCard(cardElement);
   closePopup(popupAddCard);
   cardTitle.value = '';
   cardImage.value = '';
@@ -77,11 +78,6 @@ function formProfileSubmitHandler(event) {
   closePopup(popupProfileEdit);
 }
 
-//добавить карточки "из коробки"
-for (let i=0; i<initialCards.length; i++) {
-  createCard(initialCards[i].name, initialCards[i].link);
-}
-
 //просмотр увеличенной картинки
 function showImage(evt) {
   popupImage.querySelector('.popup__image').src = evt.target.src;
@@ -90,6 +86,13 @@ function showImage(evt) {
   openPopup(popupImage);
 }
 
+//добавить карточки "из коробки"
+for (let i=0; i<initialCards.length; i++) {
+  const card = createCard(initialCards[i].name, initialCards[i].link);
+  addCard(card);
+}
+
+//навесить события на элементы
 profileEditButton.addEventListener('click', openProfileForm)
 closeProfileButton.addEventListener('click', () => closePopup(popupProfileEdit));
 formProfile.addEventListener('submit', formProfileSubmitHandler);
