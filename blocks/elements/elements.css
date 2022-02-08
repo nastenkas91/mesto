@@ -3,7 +3,7 @@
   margin-right: calc((100% - 880px) / 2);
   margin-top: 0;
   margin-bottom: 67px;
-  min-height: 50vh;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 920px) {

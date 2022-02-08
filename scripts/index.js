@@ -43,14 +43,33 @@ function addLike(evt) {
   evt.target.classList.toggle('element__like-btn_active');
 }
 
+//закрытие попапа при щелчке по оверлею
+function handleOverlayClose(event) {
+  if (event.currentTarget === event.target) {
+    closePopup(event.target);
+  }
+}
+
+//закрытие попапа при нажатии на esc
+function handleEscClose(event) {
+  const currentPopup = document.querySelector('.popup_opened');
+  if (event.key === 'Escape') {
+    closePopup(currentPopup);
+  }
+}
+
 //открыть попап
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  popup.addEventListener('click', handleOverlayClose);
+  document.addEventListener('keydown', handleEscClose);
 }
 
 //закрыть попап
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  popup.removeEventListener('click', handleOverlayClose);
+  document.removeEventListener('keydown', handleEscClose);
 }
 
 //окно создания карточки
@@ -87,10 +106,13 @@ function showImage(evt) {
 }
 
 //добавить карточки "из коробки"
-for (let i=0; i<initialCards.length; i++) {
-  const card = createCard(initialCards[i].name, initialCards[i].link);
-  addCard(card);
+function addInitialCards() {
+  initialCards.forEach(function (card) {
+    cardList.append(createCard(card.name, card.link));
+  })
 }
+
+addInitialCards();
 
 //навесить события на элементы
 profileEditButton.addEventListener('click', openProfileForm)
@@ -102,4 +124,7 @@ closeCardButton.addEventListener('click', () => closePopup(popupAddCard));
 formCard.addEventListener('submit', formCardSubmitHandler);
 
 closeImageButton.addEventListener('click', () => closePopup(popupImage));
+
+
+
 
