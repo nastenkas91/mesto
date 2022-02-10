@@ -20,10 +20,10 @@ import {
   cardTemplate,
 } from "./data.js";
 
-//import {
-//  resetValidation,
-//  validationObject
-//} from "./validate.js"
+import {
+  switchButtonOff,
+  validationObject
+} from "./validate.js"
 
 //функция создания карточки
 function createCard(nameValue, linkValue) {
@@ -109,7 +109,8 @@ function formCardSubmitHandler(event) {
   closePopup(popupAddCard);
   cardTitle.value = '';
   cardImage.value = '';
-  //addCardButton
+  const submitButton = popupAddCard.querySelector(validationObject.submitButtonSelector);
+  switchButtonOff(submitButton, validationObject);
 }
 
 //окно редактирования профиля
