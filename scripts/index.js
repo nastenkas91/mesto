@@ -21,7 +21,7 @@ import {
 } from "./data.js";
 
 import {
-  switchButtonOff,
+  resetValidation,
   validationObject
 } from "./validate.js"
 
@@ -74,6 +74,7 @@ function removeCard(evt) {
 
 //открыть попап
 function openPopup(popup, validationConfig) {
+  resetValidation(popup, validationConfig);
   popup.classList.add('popup_opened');
   popup.addEventListener('click', handleOverlayClose);
   document.addEventListener('keydown', handleEscClose);
@@ -109,15 +110,13 @@ function formCardSubmitHandler(event) {
   closePopup(popupAddCard);
   cardTitle.value = '';
   cardImage.value = '';
-  const submitButton = popupAddCard.querySelector(validationObject.submitButtonSelector);
-  switchButtonOff(submitButton, validationObject);
 }
 
 //окно редактирования профиля
-function openProfileForm() {
+function openProfileForm(validationConfig) {
     formFieldName.value = profileName.textContent;
     formFieldOccupation.value = profileOccupation.textContent;
-    openPopup(popupProfileEdit);
+    openPopup(popupProfileEdit, validationConfig);
 }
 
 //изменение профиля
@@ -131,11 +130,11 @@ function formProfileSubmitHandler(event) {
 addInitialCards();
 
 //навесить события на элементы
-profileEditButton.addEventListener('click', openProfileForm)
+profileEditButton.addEventListener('click', () => openProfileForm(validationObject))
 closeProfileButton.addEventListener('click', () => closePopup(popupProfileEdit));
 formProfile.addEventListener('submit', formProfileSubmitHandler);
 
-addCardButton.addEventListener('click', () => openPopup(popupAddCard));
+addCardButton.addEventListener('click', () => openPopup(popupAddCard, validationObject));
 closeCardButton.addEventListener('click', () => closePopup(popupAddCard));
 formCard.addEventListener('submit', formCardSubmitHandler);
 

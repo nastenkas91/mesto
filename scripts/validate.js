@@ -30,25 +30,15 @@ const hasInvalidInput = (inputList) => {
   })
 }
 
-//выключить кнопку "submit"
-export const switchButtonOff = (buttonElement, validationConfig) => {
-  buttonElement.classList.add(validationConfig.inactiveButtonClass);
-  buttonElement.setAttribute('disabled', true);
-}
-
-//включить кнопку "submit"
-const switchButtonOn = (buttonElement, validationConfig) => {
-  buttonElement.classList.remove(validationConfig.inactiveButtonClass);
-  buttonElement.removeAttribute('disabled')
-}
-
 //управление состоянием кнопки "submit"
 const toggleButtonState = (inputList, buttonElement, validationConfig) => {
   if (hasInvalidInput(inputList)) {
-    switchButtonOff(buttonElement, validationConfig);
+    buttonElement.classList.add(validationConfig.inactiveButtonClass);
+    buttonElement.setAttribute('disabled', true);
   }
   else {
-    switchButtonOn(buttonElement, validationConfig);
+    buttonElement.classList.remove(validationConfig.inactiveButtonClass);
+    buttonElement.removeAttribute('disabled');
   }
 }
 
@@ -84,6 +74,16 @@ const enableValidation = (validationConfig) => {
     });
     setEventListeners(formElement, validationConfig);
   });
+}
+
+//сброс валидации
+export const resetValidation = (formElement, validationConfig) => {
+  const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputSelector));
+  const buttonElement = formElement.querySelector(validationConfig.submitButtonSelector);
+  toggleButtonState(inputList, buttonElement, validationConfig);
+  inputList.forEach((inputElement) => {
+    hideInputError(formElement, inputElement, validationConfig);
+  })
 }
 
 enableValidation(validationObject);
