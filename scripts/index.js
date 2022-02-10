@@ -71,7 +71,7 @@ cardList.addEventListener('click', function (evt) {
 })
 
 //открыть попап
-function openPopup(popup) {
+function openPopup(popup, validationConfig) {
   popup.classList.add('popup_opened');
   popup.addEventListener('click', handleOverlayClose);
   document.addEventListener('keydown', handleEscClose);
@@ -136,7 +136,5 @@ closeCardButton.addEventListener('click', () => closePopup(popupAddCard));
 formCard.addEventListener('submit', formCardSubmitHandler);
 
 closeImageButton.addEventListener('click', () => closePopup(popupImage));
-
-
 
 

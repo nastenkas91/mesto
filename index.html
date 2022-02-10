@@ -51,9 +51,29 @@
         <div class="popup__container popup__container_type_edit-profile">
           <button aria-label="Закрыть" type="button" class="popup__close-btn"></button>
           <h2 class="popup__name">Редактировать профиль</h2>
-          <form class="form" name="editProfile">
-            <input type="text" class="form__field form__field_type_name" name="profileName"  required placeholder="Имя">
-            <input type="text" class="form__field form__field_type_occupation" name="profileOccupation"  required placeholder="Род деятельности">
+          <form class="form" name="editProfile" novalidate>
+            <input
+              type="text"
+              name="profileName"
+              id="name"
+              class="form__field form__field_type_name"
+              minlength="2"
+              maxlength="40"
+              required
+              placeholder="Имя"
+            />
+            <span class="form__field-error name-error"></span>
+            <input
+              type="text"
+              name="profileOccupation"
+              id="occupation"
+              class="form__field form__field_type_occupation"
+              minlength="2"
+              maxlength="200"
+              required
+              placeholder="Род деятельности"
+            />
+            <span class="form__field-error occupation-error"></span>
             <button aria-label="Сохранить" type="submit" class="form__submit-btn">Сохранить</button>
           </form>
         </div>
@@ -63,9 +83,27 @@
         <div class="popup__container popup__container_type_add-card">
           <button aria-label="Закрыть" type="button" class="popup__close-btn"></button>
           <h2 class="popup__name">Новое место</h2>
-          <form class="form" name="addCard">
-            <input type="text" class="form__field form__field_type_card-title" name="cardTitle"  required placeholder="Название">
-            <input type="text" class="form__field form__field_type_card-img" name="cardImg"  required placeholder="Ссылка на картинку">
+          <form class="form" name="addCard" novalidate>
+            <input
+              type="text"
+              name="cardTitle"
+              id="title"
+              class="form__field form__field_type_card-title"
+              minlength="2"
+              maxlength="30"
+              required
+              placeholder="Название"
+            />
+            <span class="form__field-error title-error"></span>
+            <input
+              type="url"
+              name="cardImg"
+              id="imgUrl"
+              class="form__field form__field_type_card-img"
+              required
+              placeholder="Ссылка на картинку"
+            />
+            <span class="form__field-error imgUrl-error"></span>
             <button aria-label="Создать" type="submit" class="form__submit-btn">Создать</button>
           </form>
         </div>
@@ -83,5 +121,6 @@
   </div>
   <script type="module" src="./scripts/index.js"></script>
   <script type="module" src="./scripts/data.js"></script>
+  <script type="module" src="./scripts/validate.js"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
   font-weight: 900;
   font-size: 24px;
   line-height: 29px;
-  margin: 34px auto 50px 36px;
+  margin: 0 auto 47px 0;
   padding: 0;
 }
 
@@ -10,12 +10,6 @@
   .popup__name {
     font-size: 18px;
     line-height: 22px;
-    margin: 25px auto 39px 22px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .popup__name {
-    margin-bottom: 75px;
+    margin: 0 auto 75px 0;
   }
 }

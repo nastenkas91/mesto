@@ -1,10 +1,6 @@
 .form__field_type_name {
-  margin: 0 36px 30px;
+  margin: 0;
 }
 
-@media screen and (max-width: 468px) {
-  .form__field_type_name {
-    margin: 0 22px 30px;
-  }
-}
+
 
