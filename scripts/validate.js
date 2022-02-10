@@ -48,7 +48,7 @@ const isValid = (formElement, inputElement, validationConfig) => {
     showInputError(formElement, inputElement, inputElement.validationMessage, validationConfig);
   }
   else {
-    hideInputError(formElement, validationConfig);
+    hideInputError(formElement, inputElement, validationConfig);
   }
 }
 
