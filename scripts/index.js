@@ -20,10 +20,10 @@ import {
   cardTemplate,
 } from "./data.js";
 
-import {
-  resetValidation,
-  validationObject
-} from "./validate.js"
+//import {
+//  resetValidation,
+//  validationObject
+//} from "./validate.js"
 
 //функция создания карточки
 function createCard(nameValue, linkValue) {
