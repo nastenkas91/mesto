@@ -20,13 +20,26 @@ import {
   cardTemplate,
 } from "./data.js";
 
+import {
+  resetValidation,
+  validationObject
+} from "./validate.js"
+
 //функция создания карточки
 function createCard(nameValue, linkValue) {
   const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
-  cardElement.querySelector('.element__image').src = linkValue;
-  cardElement.querySelector('.element__image').alt = nameValue;
+  const cardImage = cardElement.querySelector('.element__image');
+  cardImage.src = linkValue;
+  cardImage.alt = nameValue;
   cardElement.querySelector('.element__name').textContent = nameValue;
+  setCardEventListeners(cardElement);
   return cardElement;
+}
+
+function setCardEventListeners(element) {
+  element.querySelector('.element__like-btn').addEventListener('click', addLike);
+  element.querySelector('.element__delete-btn').addEventListener('click', removeCard);
+  element.querySelector('.element__image').addEventListener('click', showImage);
 }
 
 //добавить картинку в галерею
@@ -42,18 +55,9 @@ function addInitialCards() {
 }
 
 //поставить лайк
-cardList.addEventListener('click', function (evt) {
-  if(evt.target.classList.contains('element__like-btn')) {
-    evt.target.classList.toggle('element__like-btn_active');
-  }
-})
-
-//удалить карточку
-cardList.addEventListener('click', function (evt) {
-  if(evt.target.classList.contains('element__delete-btn')) {
-    evt.target.closest('.element').remove();
-  }
-})
+function addLike(evt) {
+  evt.target.classList.toggle('element__like-btn_active');
+}
 
 //просмотр увеличенной картинки
 function showImage(evt) {
@@ -63,12 +67,10 @@ function showImage(evt) {
   openPopup(popupImage);
 }
 
-//открыть картинку в полном размере
-cardList.addEventListener('click', function (evt) {
-  if(evt.target.classList.contains('element__image')) {
-    showImage(evt);
-  }
-})
+//удалить карточку
+function removeCard(evt) {
+  evt.target.closest('.element').remove();
+}
 
 //открыть попап
 function openPopup(popup, validationConfig) {
@@ -93,8 +95,8 @@ function handleOverlayClose(event) {
 
 //закрытие попапа при нажатии на esc
 function handleEscClose(event) {
-  const currentPopup = document.querySelector('.popup_opened');
   if (event.key === 'Escape') {
+    const currentPopup = document.querySelector('.popup_opened');
     closePopup(currentPopup);
   }
 }
@@ -107,6 +109,7 @@ function formCardSubmitHandler(event) {
   closePopup(popupAddCard);
   cardTitle.value = '';
   cardImage.value = '';
+  //addCardButton
 }
 
 //окно редактирования профиля

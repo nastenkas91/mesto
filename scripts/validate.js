@@ -1,4 +1,4 @@
-const validationObject = {
+export const validationObject = {
   formSelector: '.form',
   inputSelector: '.form__field',
   submitButtonSelector: '.form__submit-btn',
@@ -7,6 +7,7 @@ const validationObject = {
   errorClass: 'form__field-error_active'
 };
 
+//вывести сообщение об ошибке
 const showInputError =(formElement, inputElement, errorMessage, validationConfig) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(validationConfig.inputErrorClass);
@@ -14,6 +15,7 @@ const showInputError =(formElement, inputElement, errorMessage, validationConfig
   errorElement.classList.add(validationConfig.errorClass);
 }
 
+//скрыть сообщение об ошибке
 const hideInputError =(formElement, inputElement, validationConfig) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(validationConfig.inputErrorClass);
@@ -21,12 +23,14 @@ const hideInputError =(formElement, inputElement, validationConfig) => {
   errorElement.textContent = '';
 }
 
+//проверка нескольких полей формы на валидность
 const hasInvalidInput = (inputList) => {
   return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
   })
 }
 
+//управление состоянием кнопки "submit"
 const toggleButtonState = (inputList, buttonElement, validationConfig) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(validationConfig.inactiveButtonClass);
@@ -38,6 +42,7 @@ const toggleButtonState = (inputList, buttonElement, validationConfig) => {
   }
 }
 
+//проверка поля на валидность
 const isValid = (formElement, inputElement, validationConfig) => {
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage, validationConfig);
@@ -47,6 +52,7 @@ const isValid = (formElement, inputElement, validationConfig) => {
   }
 }
 
+//установка слушателей на поля формы
 const setEventListeners = (formElement, validationConfig) => {
   const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputSelector));
   const buttonElement = formElement.querySelector(validationConfig.submitButtonSelector);
@@ -59,6 +65,7 @@ const setEventListeners = (formElement, validationConfig) => {
   })
 }
 
+//подключение валидации
 const enableValidation = (validationConfig) => {
   const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
   formList.forEach((formElement) => {
@@ -68,6 +75,14 @@ const enableValidation = (validationConfig) => {
     setEventListeners(formElement, validationConfig);
   });
 }
+
+//презагрузка валидации при открытии попапа
+/*export const resetValidation = () => {
+  toggleButtonState = (inputList, buttonElement, validationConfig);
+  inputList.forEach((inputElement) => {
+    hideInputError(formElement, inputElement, validationConfig);
+  })
+}*/
 
 enableValidation(validationObject);
 
