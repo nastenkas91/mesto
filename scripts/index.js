@@ -73,8 +73,7 @@ function removeCard(evt) {
 }
 
 //открыть попап
-function openPopup(popup, validationConfig) {
-  resetValidation(popup, validationConfig);
+function openPopup(popup) {
   popup.classList.add('popup_opened');
   popup.addEventListener('click', handleOverlayClose);
   document.addEventListener('keydown', handleEscClose);
@@ -130,11 +129,17 @@ function formProfileSubmitHandler(event) {
 addInitialCards();
 
 //навесить события на элементы
-profileEditButton.addEventListener('click', () => openProfileForm(validationObject))
+profileEditButton.addEventListener('click', () => {
+  resetValidation(popupProfileEdit, validationObject);
+  openProfileForm();
+})
 closeProfileButton.addEventListener('click', () => closePopup(popupProfileEdit));
 formProfile.addEventListener('submit', formProfileSubmitHandler);
 
-addCardButton.addEventListener('click', () => openPopup(popupAddCard, validationObject));
+addCardButton.addEventListener('click', () => {
+  resetValidation(popupAddCard, validationObject);
+  openPopup(popupAddCard)
+});
 closeCardButton.addEventListener('click', () => closePopup(popupAddCard));
 formCard.addEventListener('submit', formCardSubmitHandler);
 
