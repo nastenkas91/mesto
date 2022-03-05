@@ -36,7 +36,7 @@ function addInitialCards() {
   initialCards.forEach(function (data) {
     const card = new Card(data, '#placeCard');
     const cardElement = card.generateCard();
-    cardList.append(cardElement);
+    addCard(cardElement);
   })
 }
 
