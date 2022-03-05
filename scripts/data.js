@@ -48,4 +48,3 @@ export const popupImage = document.querySelector('.popup_type_image');
 export const closeImageButton = popupImage.querySelector('.popup__close-btn');
 
 export const cardList = document.querySelector('.elements__list');
-export const cardTemplate = document.querySelector('#placeCard').content;

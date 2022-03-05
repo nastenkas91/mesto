@@ -16,31 +16,15 @@ import {
   cardImage,
   popupImage,
   closeImageButton,
-  cardList,
-  cardTemplate,
+  cardList
 } from "./data.js";
 
 import {
   resetValidation,
   validationObject
-} from "./validate.js"
+} from "./FormValidator.js"
 
-//функция создания карточки
-function createCard(nameValue, linkValue) {
-  const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
-  const cardImage = cardElement.querySelector('.element__image');
-  cardImage.src = linkValue;
-  cardImage.alt = nameValue;
-  cardElement.querySelector('.element__name').textContent = nameValue;
-  setCardEventListeners(cardElement);
-  return cardElement;
-}
-
-function setCardEventListeners(element) {
-  element.querySelector('.element__like-btn').addEventListener('click', addLike);
-  element.querySelector('.element__delete-btn').addEventListener('click', removeCard);
-  element.querySelector('.element__image').addEventListener('click', showImage);
-}
+import {Card} from "./Card.js"
 
 //добавить картинку в галерею
 function addCard(element) {
@@ -49,31 +33,15 @@ function addCard(element) {
 
 //добавить карточки "из коробки"
 function addInitialCards() {
-  initialCards.forEach(function (card) {
-    cardList.append(createCard(card.name, card.link));
+  initialCards.forEach(function (data) {
+    const card = new Card(data, '#placeCard');
+    const cardElement = card.generateCard();
+    cardList.append(cardElement);
   })
 }
 
-//поставить лайк
-function addLike(evt) {
-  evt.target.classList.toggle('element__like-btn_active');
-}
-
-//просмотр увеличенной картинки
-function showImage(evt) {
-  popupImage.querySelector('.popup__image').src = evt.target.src;
-  popupImage.querySelector('.popup__image').alt = evt.target.alt;
-  popupImage.querySelector('.popup__caption').textContent = evt.target.alt;
-  openPopup(popupImage);
-}
-
-//удалить карточку
-function removeCard(evt) {
-  evt.target.closest('.element').remove();
-}
-
 //открыть попап
-function openPopup(popup) {
+export function openPopup(popup) {
   popup.classList.add('popup_opened');
   popup.addEventListener('click', handleOverlayClose);
   document.addEventListener('keydown', handleEscClose);
@@ -104,7 +72,11 @@ function handleEscClose(event) {
 //окно создания карточки
 function formCardSubmitHandler(event) {
   event.preventDefault();
-  const cardElement = createCard(cardTitle.value, cardImage.value);
+  const cardData = {
+    name: cardTitle.value, link: cardImage.value
+  }
+  const card = new Card(cardData, '#placeCard');
+  const cardElement = card.generateCard();
   addCard(cardElement);
   closePopup(popupAddCard);
   cardTitle.value = '';
