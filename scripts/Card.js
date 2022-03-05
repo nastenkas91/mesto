@@ -3,7 +3,7 @@ import {openPopup} from "./index.js";
 
 export class Card {
   constructor(data, cardSelector) {
-    this._image = data.image;
+    this._image = data.link;
     this._name = data.name;
     this._selector = cardSelector;
   }
