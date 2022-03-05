@@ -5,6 +5,7 @@
   height: 282px;
   object-fit: cover;
   object-position: center;
+  border-radius: 10px;
   transition: opacity 0.5s linear;
 }
 
