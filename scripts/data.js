@@ -48,3 +48,12 @@ export const popupImage = document.querySelector('.popup_type_image');
 export const closeImageButton = popupImage.querySelector('.popup__close-btn');
 
 export const cardList = document.querySelector('.elements__list');
+
+export const validationObject = {
+  formSelector: '.form',
+  inputSelector: '.form__field',
+  submitButtonSelector: '.form__submit-btn',
+  inactiveButtonClass: 'form__submit-btn_disabled',
+  inputErrorClass: 'form__field_type_error',
+  errorClass: 'form__field-error_active'
+};

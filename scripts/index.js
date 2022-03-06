@@ -16,13 +16,11 @@ import {
   cardImage,
   popupImage,
   closeImageButton,
-  cardList
+  cardList,
+  validationObject
 } from "./data.js";
 
-import {
-  resetValidation,
-  validationObject
-} from "./FormValidator.js"
+import {FormValidator} from "./FormValidator.js"
 
 import {Card} from "./Card.js"
 
@@ -100,21 +98,31 @@ function formProfileSubmitHandler(event) {
 
 addInitialCards();
 
+//подключение валидации
+const profileFormValidator = new FormValidator(validationObject, formProfile);
+const cardFormValidator = new FormValidator(validationObject, formCard);
+
+profileFormValidator.enableValidation();
+cardFormValidator.enableValidation();
+
 //навесить события на элементы
 profileEditButton.addEventListener('click', () => {
-  resetValidation(popupProfileEdit, validationObject);
+  //profileFormValidator.resetValidation();
   openProfileForm();
-})
+});
+
 closeProfileButton.addEventListener('click', () => closePopup(popupProfileEdit));
 formProfile.addEventListener('submit', formProfileSubmitHandler);
 
 addCardButton.addEventListener('click', () => {
-  resetValidation(popupAddCard, validationObject);
+  //cardFormValidator.resetValidation();
   openPopup(popupAddCard)
 });
+
 closeCardButton.addEventListener('click', () => closePopup(popupAddCard));
 formCard.addEventListener('submit', formCardSubmitHandler);
 
 closeImageButton.addEventListener('click', () => closePopup(popupImage));
+
 
 
