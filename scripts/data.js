@@ -50,6 +50,7 @@ export const caption = popupImage.querySelector('.popup__caption');
 export const closeImageButton = popupImage.querySelector('.popup__close-btn');
 
 export const cardList = document.querySelector('.elements__list');
+export const popups = document.querySelectorAll('.popup');
 
 export const validationObject = {
   formSelector: '.form',
