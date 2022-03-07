@@ -45,6 +45,8 @@ export const cardTitle =  formCard.querySelector('.form__field_type_card-title')
 export const cardImage =  formCard.querySelector('.form__field_type_card-img');
 
 export const popupImage = document.querySelector('.popup_type_image');
+export const image = popupImage.querySelector('.popup__image');
+export const caption = popupImage.querySelector('.popup__caption');
 export const closeImageButton = popupImage.querySelector('.popup__close-btn');
 
 export const cardList = document.querySelector('.elements__list');

@@ -15,6 +15,8 @@ import {
   cardTitle,
   cardImage,
   popupImage,
+  image,
+  caption,
   closeImageButton,
   cardList,
   validationObject
@@ -24,16 +26,22 @@ import {FormValidator} from "./FormValidator.js"
 
 import {Card} from "./Card.js"
 
+//создать карточку
+function createCard(data, handleCardClick) {
+  const card = new Card(data, '#placeCard', handleCardClick);
+  const cardElement = card.generateCard();
+  return cardElement;
+}
+
 //добавить картинку в галерею
 function addCard(element) {
   cardList.prepend(element);
 }
 
 //добавить карточки "из коробки"
-function addInitialCards() {
+function addInitialCards(handleCardClick) {
   initialCards.forEach(function (data) {
-    const card = new Card(data, '#placeCard');
-    const cardElement = card.generateCard();
+    const cardElement = createCard(data, handleCardClick)
     addCard(cardElement);
   })
 }
@@ -41,14 +49,14 @@ function addInitialCards() {
 //открыть попап
 export function openPopup(popup) {
   popup.classList.add('popup_opened');
-  popup.addEventListener('click', handleOverlayClose);
+  popup.addEventListener('mousedown', handleOverlayClose);
   document.addEventListener('keydown', handleEscClose);
 }
 
 //закрыть попап
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  popup.removeEventListener('click', handleOverlayClose);
+  popup.removeEventListener('mousedown', handleOverlayClose);
   document.removeEventListener('keydown', handleEscClose);
 }
 
@@ -68,59 +76,75 @@ function handleEscClose(event) {
 }
 
 //окно создания карточки
-function formCardSubmitHandler(event) {
+function handleCardFormSubmit(event) {
   event.preventDefault();
   const cardData = {
     name: cardTitle.value, link: cardImage.value
   }
-  const card = new Card(cardData, '#placeCard');
-  const cardElement = card.generateCard();
+  const cardElement = createCard(cardData, handleCardClick);
   addCard(cardElement);
   closePopup(popupAddCard);
-  cardTitle.value = '';
-  cardImage.value = '';
+  formCard.reset();
+}
+
+//просмотр увеличенной картинки
+function handleCardClick(name, link) {
+  image.src = link;
+  image.alt = name;
+  caption.textContent = name;
+  openPopup(popupImage);
 }
 
 //окно редактирования профиля
-function openProfileForm(validationConfig) {
+function openProfileForm() {
     formFieldName.value = profileName.textContent;
     formFieldOccupation.value = profileOccupation.textContent;
-    openPopup(popupProfileEdit, validationConfig);
+    openPopup(popupProfileEdit);
 }
 
 //изменение профиля
-function formProfileSubmitHandler(event) {
+function handleProfileFormSubmit(event) {
   event.preventDefault();
   profileName.textContent = formFieldName.value;
   profileOccupation.textContent = formFieldOccupation.value;
   closePopup(popupProfileEdit);
 }
 
-addInitialCards();
+addInitialCards(handleCardClick);
 
 //подключение валидации
-const profileFormValidator = new FormValidator(validationObject, formProfile);
-const cardFormValidator = new FormValidator(validationObject, formCard);
+//объект с экзкмплярами валидаторов всех форм
+const formValidators = {};
+const enableValidation = (validationObject) => {
+  const formList = Array.from(document.querySelectorAll(validationObject.formSelector));
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(validationObject, formElement);
+    //получаем имя формы
+    const formName = formElement.getAttribute('name');
+    //записываем полученный экземпляр под именем формы в объект
+    formValidators[formName] = validator;
+    validator.enableValidation()
+  })
+}
 
-profileFormValidator.enableValidation();
-cardFormValidator.enableValidation();
+enableValidation(validationObject);
 
 //навесить события на элементы
 profileEditButton.addEventListener('click', () => {
-  //profileFormValidator.resetValidation();
+  formValidators['editProfile'].resetValidation();
   openProfileForm();
 });
 
 closeProfileButton.addEventListener('click', () => closePopup(popupProfileEdit));
-formProfile.addEventListener('submit', formProfileSubmitHandler);
+formProfile.addEventListener('submit', handleProfileFormSubmit);
 
 addCardButton.addEventListener('click', () => {
-  //cardFormValidator.resetValidation();
+  formValidators['addCard'].resetValidation();
   openPopup(popupAddCard)
 });
 
 closeCardButton.addEventListener('click', () => closePopup(popupAddCard));
-formCard.addEventListener('submit', formCardSubmitHandler);
+formCard.addEventListener('submit', handleCardFormSubmit);
 
 closeImageButton.addEventListener('click', () => closePopup(popupImage));
 

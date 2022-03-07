@@ -63,6 +63,7 @@ export class FormValidator {
 
   //установка слушателей на поля формы
   _setEventListeners() {
+    this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkValidity(inputElement)
