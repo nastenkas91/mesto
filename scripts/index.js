@@ -45,7 +45,7 @@ function addInitialCards(handleCardClick) {
 }
 
 //открыть попап
-export function openPopup(popup) {
+function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', handleEscClose);
 }
