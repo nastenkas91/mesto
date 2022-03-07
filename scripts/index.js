@@ -2,11 +2,9 @@ import {
   initialCards,
   popupProfileEdit,
   profileEditButton,
-  closeProfileButton,
   formProfile,
   popupAddCard,
   addCardButton,
-  closeCardButton,
   formCard,
   profileName,
   profileOccupation,
@@ -18,7 +16,6 @@ import {
   popups,
   image,
   caption,
-  closeImageButton,
   cardList,
   validationObject
 } from "./data.js";
@@ -50,24 +47,15 @@ function addInitialCards(handleCardClick) {
 //открыть попап
 export function openPopup(popup) {
   popup.classList.add('popup_opened');
-  //popup.addEventListener('mousedown', handleOverlayClose);
   document.addEventListener('keydown', handleEscClose);
 }
 
 //закрыть попап
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  //popup.removeEventListener('mousedown', handleOverlayClose);
   document.removeEventListener('keydown', handleEscClose);
 }
-/*
-//закрытие попапа при щелчке по оверлею
-function handleOverlayClose(event) {
-  if (event.currentTarget === event.target) {
-    closePopup(event.target);
-  }
-}
-*/
+
 //закрытие попапа при нажатии на esc
 function handleEscClose(event) {
   if (event.key === 'Escape') {
@@ -136,7 +124,6 @@ profileEditButton.addEventListener('click', () => {
   openProfileForm();
 });
 
-//closeProfileButton.addEventListener('click', () => closePopup(popupProfileEdit));
 formProfile.addEventListener('submit', handleProfileFormSubmit);
 
 addCardButton.addEventListener('click', () => {
@@ -144,10 +131,7 @@ addCardButton.addEventListener('click', () => {
   openPopup(popupAddCard)
 });
 
-//closeCardButton.addEventListener('click', () => closePopup(popupAddCard));
 formCard.addEventListener('submit', handleCardFormSubmit);
-
-//closeImageButton.addEventListener('click', () => closePopup(popupImage));
 
 //объединить обработчики оверлея и крестиков
 popups.forEach((popup) => {

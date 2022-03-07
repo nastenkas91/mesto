@@ -27,12 +27,10 @@ export const initialCards = [
 
 export const popupProfileEdit = document.querySelector('.popup_type_edit-profile');
 export const profileEditButton = document.querySelector('.profile__edit-btn');
-export const closeProfileButton = popupProfileEdit.querySelector('.popup__close-btn');
 export const formProfile = popupProfileEdit.querySelector('.form');
 
 export const popupAddCard = document.querySelector('.popup_type_add-card');
 export const addCardButton = document.querySelector('.profile__add-img-btn');
-export const closeCardButton = popupAddCard.querySelector('.popup__close-btn');
 export const formCard = popupAddCard.querySelector('.form');
 
 
@@ -47,7 +45,6 @@ export const cardImage =  formCard.querySelector('.form__field_type_card-img');
 export const popupImage = document.querySelector('.popup_type_image');
 export const image = popupImage.querySelector('.popup__image');
 export const caption = popupImage.querySelector('.popup__caption');
-export const closeImageButton = popupImage.querySelector('.popup__close-btn');
 
 export const cardList = document.querySelector('.elements__list');
 export const popups = document.querySelectorAll('.popup');
