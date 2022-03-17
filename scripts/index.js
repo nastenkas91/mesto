@@ -18,11 +18,11 @@ import {
   caption,
   cardList,
   validationObject
-} from "./data.js";
+} from "../utils/data.js";
 
-import {FormValidator} from "./FormValidator.js"
+import {FormValidator} from "../components/FormValidator.js"
 
-import {Card} from "./Card.js"
+import {Card} from "../components/Card.js"
 
 //создать карточку
 function createCard(data, handleCardClick) {
