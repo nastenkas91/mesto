@@ -36,9 +36,6 @@ export const profileOccupationSelector = '.profile__occupation';
 export const fieldName = document.querySelector('.form__field_type_name');
 export const fieldOccupation = document.querySelector('.form__field_type_occupation');
 
-export const cardTitle =  document.querySelector('.form__field_type_card-title');
-export const cardImage =  document.querySelector('.form__field_type_card-img');
-
 export const popupImage = '.popup_type_image';
 
 export const cardListSelector = '.elements__list';

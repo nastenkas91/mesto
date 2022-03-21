@@ -6,8 +6,6 @@ import {
   profileEditButton,
   popupAddCard,
   addCardButton,
-  cardTitle,
-  cardImage,
   popupImage,
   validationObject,
   cardListSelector,
@@ -25,8 +23,15 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 
 const cardSection = new Section({
-  renderer: (item) => {
-    cardSection.addItem(createCard(item))
+  renderer: (cardData) => {
+    const card = new Card({
+        cardData,
+        handleCardClick: () => {
+          imageView.open(cardData);
+        }
+      },
+      "#placeCard");
+    return card.generateCard();
     },
   },
   cardListSelector
@@ -34,36 +39,20 @@ const cardSection = new Section({
 
 const imageView = new PopupWithImage(popupImage);
 
-//функция создания карточки
-function createCard(cardData) {
-  const card = new Card({
-      cardData,
-      handleCardClick: () => {
-        imageView.open(cardData);
-      }
-      },
-    "#placeCard");
-  return card.generateCard();
-}
-
 const cardForm = new PopupWithForm(popupAddCard, {
-  handleFormSubmit: (evt) => {
-    const cardData = {
-      name: cardTitle.value,
-      link: cardImage.value
-    };
-    cardSection.addItem(createCard(cardData));
+  handleFormSubmit: (cardData) => {
+    cardSection.addItem(cardData);
+    //cardForm.close()
   }})
 
 const profileInfo = new UserInfo({nameSelector: profileNameSelector,
   occupationSelector: profileOccupationSelector})
 
 const profileForm = new PopupWithForm(popupProfileEdit, {
-  handleFormSubmit: (evt) => {
-    profileInfo.setUserInfo( {
-      name: fieldName.value,
-      occupation: fieldOccupation.value
-    })
+  handleFormSubmit: (userData) => {
+    profileInfo.setUserInfo(userData);
+    console.log(userData)
+    //profileForm.close()
   }
 })
 
@@ -87,8 +76,9 @@ enableValidation(validationObject);
 //установка слушателей
 profileEditButton.addEventListener('click', () => {
   formValidators['editProfile'].resetValidation();
-  fieldName.value = profileInfo.getUserInfo().profileName;
-  fieldOccupation.value = profileInfo.getUserInfo().profileOccupation;
+  const {profileName, profileOccupation} = profileInfo.getUserInfo();
+  fieldName.value = profileName;
+  fieldOccupation.value = profileOccupation;
   profileForm.open();
 });
 

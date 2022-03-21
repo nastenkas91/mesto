@@ -23,6 +23,7 @@ export default class Card {
     this._cardImg.alt = this._name;
     this._card.querySelector('.element__name').textContent = this._name;
     this._likeButton = this._card.querySelector('.element__like-btn');
+    this._deleteButton = this._card.querySelector('.element__delete-btn');
     this._setCardEventListeners();
     return this._card;
   }
@@ -40,10 +41,10 @@ export default class Card {
 
   //установить слушатели событий
   _setCardEventListeners() {
-    this._card.querySelector('.element__like-btn').addEventListener('click', () => {
+    this._likeButton.addEventListener('click', () => {
       this._addLike();
     });
-    this._card.querySelector('.element__delete-btn').addEventListener('click', () => {
+    this._deleteButton.addEventListener('click', () => {
       this._removeCard();
     });
     this._cardImg.addEventListener('click', () => {
