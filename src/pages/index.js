@@ -42,7 +42,6 @@ const imageView = new PopupWithImage(popupImage);
 const cardForm = new PopupWithForm(popupAddCard, {
   handleFormSubmit: (cardData) => {
     cardSection.addItem(cardData);
-    //cardForm.close()
   }})
 
 const profileInfo = new UserInfo({nameSelector: profileNameSelector,
@@ -51,8 +50,6 @@ const profileInfo = new UserInfo({nameSelector: profileNameSelector,
 const profileForm = new PopupWithForm(popupProfileEdit, {
   handleFormSubmit: (userData) => {
     profileInfo.setUserInfo(userData);
-    console.log(userData)
-    //profileForm.close()
   }
 })
 
