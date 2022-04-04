@@ -4,7 +4,7 @@
   border: none;
   max-width: 358px;
   height: 50px;
-  margin: 31px 0 0;
+  margin: 20px 0 0;
   font-size: 18px;
   line-height: 22px;
   text-align: center;
@@ -17,9 +17,16 @@
   opacity: 0.8;
 }
 
+@media screen and (max-width: 468px) {
+  .form__submit-btn {
+    min-height: 45px;
+    margin: 0;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .form__submit-btn {
-    margin: 31px 0 0;
+    margin: 0;
     font-size: 14px;
     line-height: 17px;
     height: 46px;
