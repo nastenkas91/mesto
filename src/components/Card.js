@@ -63,7 +63,7 @@ export default class Card {
   }
 
   //удалить карточку
-  _removeCard() {
+  removeCard() {
     this._card.remove();
     this._card = null;
   }

@@ -37,7 +37,6 @@ export const profileOccupationSelector = '.profile__occupation';
 export const profileAvatarSelector = '.profile__avatar';
 export const fieldName = document.querySelector('.form__field_type_name');
 export const fieldOccupation = document.querySelector('.form__field_type_occupation');
-export const fieldAvatar = document.querySelector('.form__field_type_avatar')
 
 export const popupImage = '.popup_type_image';
 
