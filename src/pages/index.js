@@ -45,10 +45,7 @@ const profileForm = new PopupWithForm(popupProfileEdit, {
         userName: userData.profileName,
         occupation: userData.profileOccupation})
       .then((res) => {
-        profileInfo.setUserInfo({
-          profileName: res.name,
-          profileOccupation: res.about,
-          profileAvatar: res.avatar});
+        profileInfo.setUserInfo(res);
         profileForm.close();
       })
       .catch((err) => {
@@ -124,11 +121,7 @@ const popupWithAvatar = new PopupWithForm(popupEditAvatarSelector, {
         data: avData.avatarLink
       })
       .then((res) => {
-        profileInfo.setUserInfo({
-          profileName: res.name,
-          profileOccupation: res.about,
-          profileAvatar: res.avatar
-        });
+        profileInfo.setUserInfo(res);
         popupWithAvatar.close();
       })
       .catch((err) => {
@@ -202,12 +195,7 @@ popupWithAvatar.setEventListeners()
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([data, items]) => {
-    profileInfo.setUserInfo({
-      profileName: data.name,
-      profileOccupation: data.about,
-      profileAvatar: data.avatar,
-      profileId: data._id
-    });
+    profileInfo.setUserInfo(data);
     cardSection.renderItems(items.reverse())
   })
   .catch(((err) => {

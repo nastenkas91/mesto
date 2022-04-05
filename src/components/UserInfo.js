@@ -14,11 +14,11 @@ export default class UserInfo {
     return userInfo;
   }
 
-  setUserInfo({ profileName, profileOccupation, profileAvatar, profileId }) {
-    this._name.textContent = profileName;
-    this._occupation.textContent = profileOccupation;
-    this._avatar.src = profileAvatar;
-    this._profileId = profileId
+  setUserInfo(data) {
+    this._name.textContent = data.name;
+    this._occupation.textContent = data.about;
+    this._avatar.src = data.avatar;
+    this._profileId = data._id
   }
 
   returnProfileId() {
