@@ -3,11 +3,11 @@ Interactive page where you can add/delete photos, open full-size view,
 update profile information, add likes. All the forms are checked for validity.
 
 ## Technologies used:
-* adaptive layout
+* Adaptive layout
 * BEM methodology
 * OOP
 * Responsive elements with JS
-* form validation
+* Form validation
 * Api
 
 ## Link to github pages
