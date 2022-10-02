@@ -10,6 +10,10 @@ update profile information, add likes. All the forms are checked for validity.
 * Form validation
 * Api
 
+## How to run project
+* npm i - install dependencies
+* npm run dev — run project on local server
+
 ## Link to github pages
 https://nastenkas91.github.io/mesto/
 
@@ -24,5 +28,11 @@ https://nastenkas91.github.io/mesto/
 * валидация при помощи JS
 * Api
 
+## Запуск проекта
+* npm i — установить зависимости;
+* npm run dev — запустить проект на локальном сервере;
+
 ## Ссылка на github pages
 https://nastenkas91.github.io/mesto/
+
+
